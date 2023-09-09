@@ -5,13 +5,11 @@ SCOREBOARD_URL = "http://localhost:8080/"
 
 
 def main():
-    #rep = http.get(SCOREBOARD_URL)
-    #if rep.status_code != 200:
-    #    fail("Scoreboard request failed with status %d", rep.status_code)
+    rep = http.get(SCOREBOARD_URL)
+    if rep.status_code != 200:
+        fail("Scoreboard request failed with status %d", rep.status_code)
 
-    matchups = [
-
-    ]
+    matchups = rep.json()["matchups"]
 
     scoreboardTidbytElements = []
 
