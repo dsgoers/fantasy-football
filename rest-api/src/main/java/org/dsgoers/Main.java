@@ -34,7 +34,6 @@ public class Main {
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        System.out.println("url: " + baseUrl + ".");
         final HttpRequest scheduleRequest = HttpRequest
                 .newBuilder(URI.create(baseUrl + "?" + scheduleQueryString))
                 .build();
