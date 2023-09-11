@@ -100,7 +100,7 @@ public class Main {
     private static MatchupTeam externalToMatchupTeam(final org.dsgoers.dto.external.MatchupTeam externalMatchupTeam) {
         final MatchupTeam matchupTeam = new MatchupTeam();
         matchupTeam.setName(Integer.toString(externalMatchupTeam.getTeamId()));
-        matchupTeam.setScore(externalMatchupTeam.getTotalPoints());
+        matchupTeam.setScore(externalMatchupTeam.getTotalPointsLive());
 
         return matchupTeam;
     }

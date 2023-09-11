@@ -6,7 +6,7 @@ import lombok.Data;
 public class MatchupTeam {
 
     private int teamId;
-    private int totalPoints;
-    private int totalPointsLive;
+    private double totalPoints;
+    private double totalPointsLive;
 
 }

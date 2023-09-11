@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class MatchupTeam {
 
-    private int score;
+    private double score;
     private String name;
 
 }
