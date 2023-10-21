@@ -23,7 +23,7 @@ public class LambdaApp implements RequestHandler<Object, Object> {
     public Object handleRequest(final Object input, final Context context) {
         try {
             return main.main();
-        } catch (IOException | InterruptedException e) {
+        } catch (final IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
