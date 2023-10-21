@@ -3,6 +3,8 @@ package org.dsgoers;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
+import java.io.IOException;
+
 /**
  * Lambda function entry point. You can change to use other pojo type or implement
  * a different RequestHandler.
@@ -11,16 +13,20 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
  */
 public class LambdaApp implements RequestHandler<Object, Object> {
 
+    final Main main;
+
     public LambdaApp() {
-        // Initialize stuff (ex S3 client) outside of the handler method so that it can be reused for subsequent invocations.
-        // It is initialized when the class is loaded.
-        // Consider invoking a simple api here to pre-warm up the application, eg: dynamodb#listTables
+        main = new Main(null);
     }
 
     @Override
     public Object handleRequest(final Object input, final Context context) {
-        // TODO: invoking the api call using s3Client.
-        return input;
+        try {
+            return main.main();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }
 

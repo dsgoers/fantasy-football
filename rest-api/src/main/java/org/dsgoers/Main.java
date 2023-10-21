@@ -7,8 +7,6 @@ import org.dsgoers.dto.Scoreboard;
 import org.dsgoers.dto.external.Matchup;
 import org.dsgoers.dto.external.Schedule;
 import org.dsgoers.dto.external.Teams;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,11 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
 public class Main {
 
-    @Value("${FANTASY_FOOTBALL_BASE_URL}")
-    private String baseUrl;
+    private final String baseUrl;
+
+    public Main(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     public String main() throws IOException, InterruptedException {
         final String scheduleQueryString = "view=mMatchup&view=mMatchupScore&scoringPeriodId=1";
