@@ -40,7 +40,7 @@ public class Main {
         final HttpResponse<String> scheduleResponse = httpClient.send(scheduleRequest, bodyHandler);
         final Schedule schedule = objectMapper.readValue(scheduleResponse.body(), Schedule.class);
 
-        final int weekPeriodId = 1;
+        final int weekPeriodId = 7;
         final List<Matchup> weekMatchups = new ArrayList<>();
 
         schedule.getSchedule().forEach(matchup -> {
