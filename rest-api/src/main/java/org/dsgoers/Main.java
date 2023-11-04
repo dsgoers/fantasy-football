@@ -7,6 +7,7 @@ import org.dsgoers.dto.Scoreboard;
 import org.dsgoers.dto.external.Matchup;
 import org.dsgoers.dto.external.Schedule;
 import org.dsgoers.dto.external.Teams;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,11 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class Main {
 
     private final String baseUrl;
 
-    public Main(String baseUrl) {
+    public Main(final String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
