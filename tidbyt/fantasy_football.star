@@ -19,13 +19,13 @@ def main():
                 children=[
                     render.Marquee(
                         width=64,
-                        child=render.Text("Home: " + str(matchup["home"]["score"])),
+                        child=render.Text(matchup["home"]["name"] + ": " + str(matchup["home"]["score"])),
                         offset_start=5,
                         offset_end=32,
                     ),
                     render.Marquee(
                         width=64,
-                        child=render.Text("Away: " + str(matchup["away"]["score"])),
+                        child=render.Text(matchup["away"]["name"] + ": " + str(matchup["away"]["score"])),
                         offset_start=5,
                         offset_end=32,
                     )

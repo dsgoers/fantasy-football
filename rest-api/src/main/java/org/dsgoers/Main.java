@@ -6,6 +6,7 @@ import org.dsgoers.dto.MatchupTeam;
 import org.dsgoers.dto.Scoreboard;
 import org.dsgoers.dto.external.Matchup;
 import org.dsgoers.dto.external.Schedule;
+import org.dsgoers.dto.external.Team;
 import org.dsgoers.dto.external.Teams;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,6 +27,10 @@ public class Main {
 
     public Main(final String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        new Main().main();
     }
 
     public String main() throws IOException, InterruptedException {
@@ -72,23 +78,21 @@ public class Main {
                     matchup.setAway(externalToMatchupTeam(externalMatchup.getAway()));
                     matchup.setHome(externalToMatchupTeam(externalMatchup.getHome()));
 
-                    final String homeName = teams
+                    final Team homeTeam = teams
                             .getTeams()
                             .stream()
                             .filter(team -> team.getId() == externalMatchup.getHome().getTeamId())
                             .findFirst()
-                            .get()
-                            .getNickname();
-                    final String awayName = teams
+                            .get();
+                    final Team awayTeam = teams
                             .getTeams()
                             .stream()
                             .filter(team -> team.getId() == externalMatchup.getAway().getTeamId())
                             .findFirst()
-                            .get()
-                            .getNickname();
+                            .get();
 
-                    matchup.getAway().setName(awayName);
-                    matchup.getHome().setName(homeName);
+                    matchup.getAway().setName(Optional.ofNullable(awayTeam.getNickname()).orElse(awayTeam.getUserFirstName()));
+                    matchup.getHome().setName(Optional.ofNullable(homeTeam.getNickname()).orElse(homeTeam.getUserFirstName()));
 
                     return matchup;
                 }).collect(Collectors.toList());
