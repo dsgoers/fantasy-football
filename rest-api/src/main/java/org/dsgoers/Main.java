@@ -15,6 +15,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +52,7 @@ public class Main {
         final HttpResponse<String> scheduleResponse = httpClient.send(scheduleRequest, bodyHandler);
         final Schedule schedule = objectMapper.readValue(scheduleResponse.body(), Schedule.class);
 
-        final int weekPeriodId = 9;
+        final long weekPeriodId = calculateWeek();
         final List<Matchup> weekMatchups = new ArrayList<>();
 
         schedule.getSchedule().forEach(matchup -> {
@@ -68,6 +72,13 @@ public class Main {
         final String scoreboardString = objectMapper.writeValueAsString(scoreboard);
 
         return scoreboardString;
+    }
+
+    private long calculateWeek() {
+        final ZonedDateTime start = ZonedDateTime.of(LocalDate.of(2023, 9, 5).atStartOfDay(), ZoneId.systemDefault());
+        final ZonedDateTime end = ZonedDateTime.now();
+
+        return ChronoUnit.WEEKS.between(start, end) + 1;
     }
 
     private static Scoreboard mapToScoreboard(final List<Matchup> weekMatchups, final Teams teams) {
