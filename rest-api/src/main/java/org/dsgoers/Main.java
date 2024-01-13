@@ -34,7 +34,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        new Main().main();
+        new Main(null).main();
     }
 
     public String main() throws IOException, InterruptedException {

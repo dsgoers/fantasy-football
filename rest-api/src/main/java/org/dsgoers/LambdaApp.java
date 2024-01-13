@@ -16,7 +16,7 @@ public class LambdaApp implements RequestHandler<Object, Object> {
     final Main main;
 
     public LambdaApp() {
-        main = new Main();
+        main = new Main(null);
     }
 
     @Override
