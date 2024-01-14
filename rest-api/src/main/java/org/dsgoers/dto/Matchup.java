@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class Matchup {
 
-    private MatchupTeam home;
-    private MatchupTeam away;
-
+  private MatchupTeam home;
+  private MatchupTeam away;
 }

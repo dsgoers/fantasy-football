@@ -2,7 +2,6 @@ package org.dsgoers;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-
 import java.io.IOException;
 
 /**
@@ -13,20 +12,18 @@ import java.io.IOException;
  */
 public class LambdaApp implements RequestHandler<Object, Object> {
 
-    final Main main;
+  final Main main;
 
-    public LambdaApp() {
-        main = new Main(null);
+  public LambdaApp() {
+    main = new Main(null);
+  }
+
+  @Override
+  public Object handleRequest(final Object input, final Context context) {
+    try {
+      return main.main();
+    } catch (final IOException | InterruptedException e) {
+      throw new RuntimeException(e);
     }
-
-    @Override
-    public Object handleRequest(final Object input, final Context context) {
-        try {
-            return main.main();
-        } catch (final IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+  }
 }
-
