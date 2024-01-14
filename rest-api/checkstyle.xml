@@ -19,7 +19,7 @@
 <module name="IllegalImport">
 <property name="illegalClasses"
         value="java.util.Date"/>
-      <property name="illegalPkgs" value="sun"/>
+      <property name="illegalPkgs" value="sun, com.apache.commons.lang, com.apache.configurations.lang"/>
     </module>
 	<module name="AvoidStarImport"/>
 <module name="UnusedImports">
