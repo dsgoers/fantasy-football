@@ -124,6 +124,9 @@
                 <version>9.0.8</version>
                 <configuration>
                     <failBuildOnCVSS>0</failBuildOnCVSS>
+                    <suppressionFiles>
+                        <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+                    </suppressionFiles>
                 </configuration>
                 <executions>
                     <execution>
