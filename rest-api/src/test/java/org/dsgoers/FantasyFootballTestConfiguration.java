@@ -6,9 +6,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FantasyFootballTestConfiguration {
 
-    @Bean
-    public String baseUrl() {
-        return "helloworld";
-    }
-
+  @Bean
+  public String baseUrl() {
+    return "helloworld";
+  }
 }
