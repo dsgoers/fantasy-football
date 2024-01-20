@@ -9,6 +9,6 @@ ENTRYPOINT ["java"]
 CMD ["-jar", "fantasy_football/fantasy-football-1.0-SNAPSHOT.jar"]
 
 USER root
-RUN apt-get -y update; apt-get -y install pixlet; apt-get install -y openjdk-21-jre;
+RUN apt-get -y update; apt-get -y install pixlet; apt-get -y install cron; apt-get install -y openjdk-21-jre;
 
 HEALTHCHECK CMD curl -f http://localhost:8080/fantasy-football/actuator/health
