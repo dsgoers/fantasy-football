@@ -1,7 +1,7 @@
 load("render.star", "render")
 load("http.star", "http")
 
-SCOREBOARD_URL = "http://localhost:8080/"
+BASE_URL = "http://localhost:8080/fantasy-football/"
 
 
 def main():
