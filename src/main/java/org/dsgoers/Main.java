@@ -28,6 +28,10 @@ public class Main {
 
   private final String baseUrl;
 
+  public Main() {
+    this.baseUrl = null;
+  }
+
   public Main(final String baseUrl) {
     this.baseUrl = baseUrl;
   }
