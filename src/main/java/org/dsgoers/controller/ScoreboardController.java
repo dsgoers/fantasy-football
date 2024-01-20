@@ -15,10 +15,10 @@ public class ScoreboardController {
   @Autowired
   private Main main;
 
-  @GetMapping(path = "/", produces = APPLICATION_JSON_VALUE)
+  @GetMapping(path = "/scoreboard", produces = APPLICATION_JSON_VALUE)
   public ResponseEntity<String> getScoreboard() throws IOException, InterruptedException {
-    final String scoreboard = main.main();
+    //final String scoreboard = main.main();
 
-    return ResponseEntity.ok(scoreboard);
+    return ResponseEntity.noContent().build();
   }
 }
